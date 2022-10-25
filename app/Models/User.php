@@ -24,7 +24,7 @@ class User extends Model
 {
 	protected $table = 'user';
 	protected $primaryKey = 'Id';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $casts = [

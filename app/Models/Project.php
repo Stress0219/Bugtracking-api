@@ -24,7 +24,7 @@ class Project extends Model
 {
 	protected $table = 'project';
 	protected $primaryKey = 'Id';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $casts = [

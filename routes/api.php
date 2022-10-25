@@ -18,3 +18,19 @@ Route::controller(BugController::class)->group(function(){
     Route::put('/bug/{id}', 'update');
     Route::delete('/bug/{id}', 'destroy');
 });
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/users', 'index');
+    Route::post('/user', 'store');
+    Route::get('/user/{id}', 'show');
+    Route::put('/user/{id}', 'update');
+    Route::delete('/user/{id}', 'destroy');
+});
+
+Route::controller(ProjectController::class)->group(function(){
+    Route::get('/projects', 'index');
+    Route::post('/project', 'store');
+    Route::get('/project/{id}', 'show');
+    Route::put('/project/{id}', 'update');
+    Route::delete('/project/{id}', 'destroy');
+});

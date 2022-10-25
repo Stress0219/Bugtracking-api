@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBugTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateBugTable extends Migration
      */
     public function up()
     {
-        Schema::create('bug', function (Blueprint $table) {
-            $table->integer('Id', true);
-            $table->integer('Project_Id')->index('Project_Id');
-            $table->integer('User')->index('User');
-            $table->string('Description', 100);
+        Schema::create('test', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateBugTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bug');
+        Schema::dropIfExists('test');
     }
-}
+};

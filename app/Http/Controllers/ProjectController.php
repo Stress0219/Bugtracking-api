@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Bug;
 use App\Models\Project;
-use App\Models\User;
 use Symfony\Component\HttpFoundation\Response;
 
-
-class BugController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class BugController extends Controller
      */
     public function index()
     {
-        $bugs = Bug::all();
-        return response($bug, Response::HTTP_OK);
+        $project = Project::all();
+        return response($project, Response::HTTP_OK);
     }
 
     /**
@@ -30,20 +27,14 @@ class BugController extends Controller
      */
     public function store(Request $request)
     {
-      $request->validate([
-        'Project_Id'=>'required',
-        'User'=>'required',
-        'Description'=>'required',
-      ]);
-      
-        $bug = new Bug();
-        $bug->Project_Id = $request->Project_Id;
-        $bug->User = $request->User;
-        $bug->Description = $request->Description;
+        $project = new Project();
+        $project-> Name = $request->Name;
+        $project->Description = $request->Description;
         
-            $bug->save();
-            return response($bug, Response::HTTP_CREATED);
+            $project->save();
+            return response($project, Response::HTTP_CREATED);
     }
+
     /**
      * Display the specified resource.
      *
@@ -52,11 +43,9 @@ class BugController extends Controller
      */
     public function show($id)
     {
-       $bug = Bug::findOrFail($id);
-       return response($bug, Response::HTTP_OK);
+        $project = Project::findOrFail($id);
+       return response($project, Response::HTTP_OK);
     }
-
-   
 
     /**
      * Update the specified resource in storage.
@@ -67,20 +56,14 @@ class BugController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $request->validate([
-        'Project_Id'=>'required',
-        'User'=>'required',
-        'Description'=>'required',
-      ]);
-
-        $bug = Bug::findOrfail($request->id);
-        $bug->Project_Id = $request->Project_Id;
-        $bug->User = $request->User;
-        $bug->Description = $request->Description;
+        $project = Project::findOrfail($request->id);
+        $project->Id = $request->Id;
+        $project->Name = $request->Name;
+        $project->Description = $request->Description;
         
-       $bug->save();
+       $project->save();
 
-       return response($bug, Response::HTTP_CREATED);
+       return response($project, Response::HTTP_CREATED);
     }
 
     /**
@@ -91,7 +74,7 @@ class BugController extends Controller
      */
     public function destroy($id)
     {
-      $bug = Bug::destroy($id);
+        $project = Project::destroy($id);
       return response()->json([
         'message'=>'Successfully deleted'
       ]);

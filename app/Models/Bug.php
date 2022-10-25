@@ -16,7 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $Project_Id
  * @property int $User
  * @property string $Description
- * @property Carbon $Creation_Date
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
  * @property Project $project
  * @property User $user
@@ -27,22 +28,16 @@ class Bug extends Model
 {
 	protected $table = 'bug';
 	protected $primaryKey = 'Id';
-	public $timestamps = false;
 
 	protected $casts = [
 		'Project_Id' => 'int',
 		'User' => 'int'
 	];
 
-	protected $dates = [
-		'Creation_Date'
-	];
-
 	protected $fillable = [
 		'Project_Id',
 		'User',
-		'Description',
-		'Creation_Date'
+		'Description'
 	];
 
 	public function project()
