@@ -57,7 +57,6 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $project = Project::findOrfail($request->id);
-        $project->Id = $request->Id;
         $project->Name = $request->Name;
         $project->Description = $request->Description;
         
